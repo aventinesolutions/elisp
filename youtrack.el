@@ -278,7 +278,7 @@ Argument PROJECT Defaults to `yt-user'."
   "Downloads issues list from youtrack and save to `yt-issue-db`."
   (interactive)
   (let* ((url-path "/rest/issue/byproject/")
-         (url-params "?max=1000")
+         (url-params "?max=10000")
          (url-issue-list (concat yt-baseurl url-path yt-project url-params)))
     (progn
       ;; Login once, this looks like the place for that
