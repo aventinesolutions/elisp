@@ -110,6 +110,11 @@ Ex: https://bug.idvc.es"
   :group 'youtrack
   :type 'file)
 
+(defcustom yt-max-issues 1000
+  "Default maximum number of issues to fetch into issue database"
+  :group 'youtrack
+  :type 'integer)
+
 ;;;; Appearance settings
 
 (defface yt-id
@@ -278,7 +283,7 @@ Argument PROJECT Defaults to `yt-user'."
   "Downloads issues list from youtrack and save to `yt-issue-db`."
   (interactive)
   (let* ((url-path "/rest/issue/byproject/")
-         (url-params "?max=10000")
+         (url-params (format "?max=%d" yt-max-issues))
          (url-issue-list (concat yt-baseurl url-path yt-project url-params)))
     (progn
       ;; Login once, this looks like the place for that
